@@ -3,17 +3,126 @@ html { box-sizing: border-box; }
 *, ::after, ::before { box-sizing: inherit; }
 
 /*
-	BARVY
-	czechitas  #b92e81
-	pozadi     #bdc3c7
-	tmava      #31363b
-	delitka    #3f464d
-	portfolio  #e74c3c
-	facebook   #3b5998
-	twitter    #1da1f2
+  BARVY
+  pozadi stranky      #bdc3c7
+  pozadi karticky     #31363b
+  barva textu         #bdc3c7
+  oddelovace          #3f464d
+  czechitas logo      #b92e81
+  tlacitko portfolio  #e74c3c
+  tlacitko facebook   #3b5998
+  tlacitko twitter    #1da1f2
 */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Source+Sans+Pro&display=swap');
+
 
 
 body {
+	font-family: 'Source Sans 3', sans-serif;
 	background-color: #bdc3c7;
-}
+	display: flex;
+	justify-content: center;
+	padding: 40px;
+	color: #bdc3c7;
+  }
+  
+  .profil {
+	width: 100%;
+	max-width: 350px;
+	min-width: 250px;
+	background-color: #31363b;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+  }
+  
+  .hlavicka {
+	position: relative;
+  }
+  
+  .foto {
+	width: 100%;
+	height: auto;
+	display: block;
+  }
+  
+  .logo {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 50px;
+	height: 50px;
+	background-color: #b92e81;
+	border-radius: 50%;
+  }
+  
+  .obsah {
+	padding: 20px;
+  }
+  
+  .jmeno {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.5em;
+	margin: 0 0 10px;
+  }
+  
+  .obsah p {
+	margin-bottom: 10px;
+	line-height: 1.4;
+  }
+  
+  .odkazy {
+	display: flex;
+	justify-content: space-around;
+	padding: 15px 0;
+	background-color: #3f464d;
+	list-style: none;
+	margin: 0;
+	text-transform: uppercase; 
+	transition: color 0.3s ease;
+	color: #bdc3c7
+	  }
+	  
+  
+	  /* Tlačítka sociální méda */
+.odkazy {
+	list-style: none;
+	padding: 0;
+	margin: 20px;
+  }
+  
+  .odkazy {
+	display: flex;
+	justify-content: space-around;
+	padding: 15px 0;
+	color: #bdc3c7;
+	list-style: none;
+	margin: 0;
+  }
+  
+  .odkazy li {
+	margin: 0;
+	
+  }
+  
+  .odkazy a {
+	text-decoration: none;
+	color: #31363b;
+	font-weight: bold;
+	transition: color 0.3s ease;
+  }
+  
+  .portfolio a:hover {
+	color: #E60023
+	 
+  }
+  
+  .facebook a:hover {
+	background-color: #31363b;
+	color: #4267B2; 
+  }
+  
+  .twitter a:hover {
+	color: #1da1f2;
+  }
