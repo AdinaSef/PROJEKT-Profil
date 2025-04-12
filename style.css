@@ -1,7 +1,3 @@
-/* nejsme vcerejsi, pouzivame moderni a intuitivni box model */
-html { box-sizing: border-box; }
-*, ::after, ::before { box-sizing: inherit; }
-
 /*
   BARVY
   pozadi stranky      #bdc3c7
@@ -14,115 +10,178 @@ html { box-sizing: border-box; }
   tlacitko twitter    #1da1f2
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Source+Sans+Pro&display=swap');
 
-
+/* intuitivnejsi box-sizing pro všechny prvky */
+* { box-sizing: border-box; }
 
 body {
-	font-family: 'Source Sans 3', sans-serif;
-	background-color: #bdc3c7;
-	display: flex;
-	justify-content: center;
-	padding: 40px;
-	color: #bdc3c7;
-  }
-  
-  .profil {
-	width: 100%;
-	max-width: 350px;
-	min-width: 250px;
-	background-color: #31363b;
-	border-radius: 8px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	overflow: hidden;
-  }
-  
-  .hlavicka {
-	position: relative;
-  }
-  
-  .foto {
-	width: 100%;
-	height: auto;
-	display: block;
-  }
-  
-  .logo {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	width: 50px;
-	height: 50px;
-	background-color: #b92e81;
-	border-radius: 50%;
-  }
-  
-  .obsah {
-	padding: 20px;
-  }
-  
-  .jmeno {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 1.5em;
-	margin: 0 0 10px;
-  }
-  
-  .obsah p {
-	margin-bottom: 10px;
-	line-height: 1.4;
-  }
-  
-  .odkazy {
-	display: flex;
-	justify-content: space-around;
-	padding: 15px 0;
-	background-color: #3f464d;
-	list-style: none;
-	margin: 0;
-	text-transform: uppercase; 
-	transition: color 0.3s ease;
-	color: #bdc3c7
-	  }
-	  
-  
-	  /* Tlačítka sociální méda */
-.odkazy {
-	list-style: none;
-	padding: 0;
-	margin: 20px;
-  }
-  
-  .odkazy {
-	display: flex;
-	justify-content: space-around;
-	padding: 15px 0;
-	color: #bdc3c7;
-	list-style: none;
-	margin: 0;
-  }
-  
-  .odkazy li {
-	margin: 0;
-	
-  }
-  
-  .odkazy a {
-	text-decoration: none;
-	color: #31363b;
-	font-weight: bold;
-	transition: color 0.3s ease;
-  }
-  
-  .portfolio a:hover {
-	color: #E60023
-	 
-  }
-  
-  .facebook a:hover {
-	background-color: #31363b;
-	color: #4267B2; 
-  }
-  
-  .twitter a:hover {
-	color: #1da1f2;
-  }
+  background: #bdc3c7;
+  font-family: "Source Sans 3", sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: "Montserrat", sans-serif;
+}
+
+.profil {
+  /*
+    Nastavím požadovanou šířku profilu.
+    Pro velikosti tlačítek později nastavím jejich šířku
+    v procentech, takže i když tady změním rozměr kartičky,
+    velikost tlačítek se přizpůsobí.
+  */
+  width: 250px;
+
+  /*
+    hodnota auto vpravo a vlevo vycentruje celý profil
+    uprostřed stránky
+  */
+  margin: 50px auto;
+
+  font-size: 14px;
+  background-color: #31363b;
+  color: #bdc3c7;
+
+  /*
+    Stín pod profilem. Hodnoty znamenají:
+    - stín se oproti profilu vysune o 0px doprava a o 3px dolů
+    - rozmazání stínu 8px
+    - stín je barvou RBG 0,0,0 (tj. černá), která je 50% průhledná (=0.5)
+  */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hlavicka {
+  /*
+    hlavička má position: relative, abychom uvnitř ní mohli
+    absolutně pozicovat ikonku s logem Czechitas
+  */
+  position: relative;
+}
+
+.foto {
+  /* přepnutím na display: block odstraníme "mezeru pod obrázkem" */
+  display: block;
+
+  /* nastavíme šířku 100%, obrázek se bude přizpůsobovat šířce rodiče, zde celého profilu */
+  width: 100%;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+
+  /*
+  Logo je absolutně pozicované ke svému rodiči, tj. hlavičce profilu.
+  Používáme right a bottom, takže ho umisťujeme vzhledem k pravému
+  dolnímu rohu hlavičky. Logo má nastavenou šířku a výšku 50px,
+  takže umístění bottom: -25px; znamená, že logo bude přesně polovinou
+  trčet pod dolní okraj hlavičky.
+  */
+  position: absolute;
+  right: 25px;
+  bottom: -25px;
+
+  /* obrázek loga je průhledný, tak mu přidáme barevné pozadí */
+  background-color: #b92e81;
+
+  /* uděláme z loga kolečko se stínem */
+  border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+.obsah {
+  /*
+    Text uvnitř obsahu je odsazený od okraje.
+    Nahoře nastavíme padding trochu větší, aby bylo
+    nad nadpisem dost místa na logo.
+  */
+  padding: 30px 20px 20px 20px;
+}
+
+.jmeno {
+  /*
+    Jméno je nadpis H1, takže selektor by mohl být h1,
+    ale raději vše stylujeme přes CSS třídy.
+  */
+  margin: 0 0 20px 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: normal;
+  color: #fff;
+}
+
+
+/* nastylujeme, jak vypadá obecné tlačítko */
+.tlacitko {
+  display: inline-block;
+
+  /* text uvnitř tlačítka není nalepený na okraj */
+  padding: 10px;
+
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+
+  /* vypneme standardní podtržení odkazu */
+  text-decoration: none;
+
+  /* text uvnitř převedeme na velká písmena */
+  text-transform: uppercase;
+
+  /* barva textu je světle šedá barva */
+  color: #bdc3c7;
+}
+
+/* obecné tlačítko při najetí myši */
+.odkazy a:hover {
+  color: #fff;
+}
+
+/*
+  Každé ze tří tlačítek má na sobě dvě třídy
+  - tlacitko
+  - portfolio / twitter / facebook
+
+  První třída .tlacitko definuje obecné tlačítko.
+  Všechna tlačítka mají stejné písmo, odsazení, apod.
+
+  Druhá třída pak určuje, co je pro konkrétní tlačítko
+  jinak oproti obecnému tlačítku. V našem případě je to
+  různá šířka pro každé tlačítko (aby se vešly správně
+  vedle sebe), barva při najetí myši a také to, kde je
+  rámeček, kterým děláme oddělovací čáry mezi tlačítky.
+*/
+
+.portfolio {
+  /*
+    tlačítko Portfolio zabírá samo celý řádek, takže ostatní
+    dvě tlačítka se zalomí a budou na řádku pod tím
+  */
+  width: 100%;
+
+  /* přidáme čáry kolem tlačítka jen na stranách, kde je chceme */
+  border-top: 1px solid #3f464d;
+  border-bottom: 1px solid #3f464d;
+}
+
+.facebook {
+  /* šířka 50%, tj. tato dvě tlačítka se vejdou vedle sebe */
+  width: 50%;
+  border-right: 1px solid #3f464d;
+}
+
+.twitter {
+  /* šířka 50%, tj. tato dvě tlačítka se vejdou vedle sebe */
+  width: 50%;
+}
+
+/* při najetí na konkrétní tlačítka se změní i barva pozadí */
+.portfolio:hover {
+  background-color: #e74c3c;
+}
+.facebook:hover {
+  background-color: #3b5998;
+}
+.twitter:hover {
+  background-color: #1da1f2;
+}
